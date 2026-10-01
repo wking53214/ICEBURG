@@ -49,4 +49,4 @@ lost chromebook-iceberg
 observe-perceive ✗ import
 ```
 
-Apache-2.0. Prefer this over ICEBERG for lineage reading.
+Proprietary. Copyright (c) 2026 William King. All rights reserved. See LICENSE. Prefer this over ICEBERG for lineage reading.
