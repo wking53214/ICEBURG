@@ -1,10 +1,10 @@
 # ICEBURG
 
-Honest **reconstruction** of the first peak IVR simulation/governance kernel (early-July 2026, post four locked corrections). Predecessor of [`sentinel_os`](https://github.com/wking53214/sentinel_os) by rename (`chromebook-iceberg` → `sentinel_os`). Never existed as this GitHub original; rebuilt 2026-09-11 from 75,449 references across 551 archive files. ~72% of 2,031 engine lines are **verbatim recovered**.
+Honest **reconstruction** of the first peak IVR simulation/governance kernel (early-July 2026, post four locked corrections). Predecessor of a separate private repository by rename (from `chromebook-iceberg`). Never existed as this GitHub original; rebuilt 2026-09-11 from 75,449 references across 551 archive files. ~72% of 2,031 engine lines are **verbatim recovered**.
 
 ## 1. Pipeline Position & Role
 
-**HISTORICAL LINEAGE.** Off the live path. Conceptual ancestor of friction, structural hash, fail-closed routing. Live kernel is sentinel_os; live IVR app is [`GSA-815`](https://github.com/wking53214/GSA-815).
+**HISTORICAL LINEAGE.** Off the live path. Conceptual ancestor of friction, structural hash, fail-closed routing.
 
 ## 2. Full System Scope & Architectural Depth
 
@@ -43,10 +43,7 @@ Fail-closed routing: undeclared journey, max_steps, duplicate `caller_id`, unkno
 
 ```text
 lost chromebook-iceberg
-    ├─ ICEBURG (this; July peak, no queues)     honest reconstruction
-    ├─ ICEBERG (queue-era + mocks)              stale
-    └─ sentinel_os (live kernel) + GSA-815 (live IVR)
-observe-perceive ✗ import
+    └─ ICEBURG (this; July peak, no queues)     honest reconstruction
 ```
 
-Proprietary. Copyright (c) 2026 William King. All rights reserved. See LICENSE. Prefer this over ICEBERG for lineage reading.
+Proprietary. Copyright (c) 2026 William King. All rights reserved. See LICENSE.
