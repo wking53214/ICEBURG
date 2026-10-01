@@ -46,4 +46,4 @@ lost chromebook-iceberg
     └─ ICEBURG (this; July peak, no queues)     honest reconstruction
 ```
 
-Proprietary. Copyright (c) 2026 William King. All rights reserved. See LICENSE.
+Proprietary. Copyright (c) 2026 William N. King. All rights reserved. See LICENSE.
