@@ -1,8 +1,8 @@
 # Provenance
 
 ICEBURG was never a GitHub repository. It lived on a Chromebook, reachable
-only through the SSH alias `chromebook-iceberg`, and was later renamed
-`sentinel_os` inside a repo called `sentinel_repo`. No copy of the working
+only through the SSH alias `chromebook-iceberg`, and was later renamed and
+continued in a separate private repository. No copy of the working
 tree survives here. What survives is the conversation around it.
 
 This repository was reconstructed on 2026-09-11 by mining five archives of
@@ -10,12 +10,14 @@ AI conversation history for every trace of the system:
 
 | Archive | Files mentioning Iceberg/Iceburg | Occurrences |
 |---|---:|---:|
-| `wking53214/Claude_History` | 425 | 65,676 |
-| `wking53214/ChatGPT_History` | 82 | 5,260 |
-| `wking53214/Gemini_Extraction` | 5 | 3,632 |
-| `wking53214/Gemini_History` | 39 | 881 |
-| `wking53214/CoPilot_History` | 0 | 0 |
+| Archive A | 425 | 65,676 |
+| Archive B | 82 | 5,260 |
+| Archive C | 5 | 3,632 |
+| Archive D | 39 | 881 |
+| Archive E | 0 | 0 |
 | **Total** | **551** | **75,449** |
+
+The five archives are private repositories, labelled A to E in this document.
 
 Active development runs 2026-06-23 to 2026-08-16.
 
@@ -29,14 +31,13 @@ parallel 43-file `flat3`, 108 tests passing and 1 skipped, organised into
 Registry/ Telemetry/ API/ CLI/ Admin/ Training/ Validation/ Governance/
 Deploy/`. This is the architecture at its most complete.
 
-**`sentinel_os` (August 2026)** — the same system renamed and pushed toward
-production: cassette/plugin architecture, a governance layer, Postgres
-ledger, Docker and Kubernetes manifests. But a cleanup commit deleted around
-30 files and seven directories on the way, including `Admin/`, `API/`,
-`CLI/`, `SDK/`, `Replay/`, `Registry/` and `Main.py`. Test count fell to
-78/79. The archive's own audits of that repo are unsparing: stale
-`structure.txt`, phantom references, a truncated test file, ~90 files flat
-at root, committed `__pycache__`.
+**The renamed successor (August 2026)** - the same system renamed and pushed
+toward production, in a separate private repository. But a cleanup commit
+deleted around 30 files and seven directories on the way, including
+`Admin/`, `API/`, `CLI/`, `SDK/`, `Replay/`, `Registry/` and `Main.py`. Test
+count fell to 78/79. The archive's own audits of that repository are
+unsparing: stale `structure.txt`, phantom references, a truncated test file,
+~90 files flat at root, committed `__pycache__`.
 
 This reconstruction targets the **first** peak — the structured architecture
 immediately after the four locked domain corrections of 2026-07-02 were
@@ -65,22 +66,22 @@ except where a specific fix is noted.
 
 | File | Status | Source |
 |---|---|---|
-| `Latent/LatentPayload.py` | RECOVERED + 1 addition | `Claude_History` `6ac96fa8` (2026-07-01) |
-| `Domain/CallerState.py` | RECOVERED | `Claude_History` `07c432bf` (2026-07-03) |
-| `Domain/IngestAdapter.py` | RECOVERED | `Claude_History` `f1a41769` (2026-07-03) |
-| `Domain/TwilioSyntheticLogGenerator.py` | RECOVERED (stub, as written) | `Claude_History` `f1a41769` |
+| `Latent/LatentPayload.py` | RECOVERED + 1 addition | Archive A `6ac96fa8` (2026-07-01) |
+| `Domain/CallerState.py` | RECOVERED | Archive A `07c432bf` (2026-07-03) |
+| `Domain/IngestAdapter.py` | RECOVERED | Archive A `f1a41769` (2026-07-03) |
+| `Domain/TwilioSyntheticLogGenerator.py` | RECOVERED (stub, as written) | Archive A `f1a41769` |
 | `Domain/Intent.py` | RECONSTRUCTED | member set from archive refs + `Build_Graph` |
 | `Domain/Emotion.py` | RECONSTRUCTED | `CallerState.new()` default pins `NEUTRAL` |
-| `Model/Build_Graph.py` | RECOVERED v2 + 1 fix | `Claude_History` `07c432bf`, "Blue Design v1" |
-| `Aggregation/PathCongestion.py` | RECOVERED | `Claude_History` `07c432bf` |
-| `Aggregation/QueueStress.py` | RECOVERED (superseded) | `Claude_History` `3f1cb83f` |
-| `Engines/rl_ppo.py` | RECOVERED + 1 fix | `Claude_History` `a24f3eca` (2026-07-02) |
+| `Model/Build_Graph.py` | RECOVERED v2 + 1 fix | Archive A `07c432bf`, "Blue Design v1" |
+| `Aggregation/PathCongestion.py` | RECOVERED | Archive A `07c432bf` |
+| `Aggregation/QueueStress.py` | RECOVERED (superseded) | Archive A `3f1cb83f` |
+| `Engines/rl_ppo.py` | RECOVERED + 1 fix | Archive A `a24f3eca` (2026-07-02) |
 | `Engines/rl_marl.py` | RECONSTRUCTED | archived contract only |
-| `Sim/Simulator.py` | RECOVERED v1 + v2 patches merged | `Claude_History` `07c432bf` |
+| `Sim/Simulator.py` | RECOVERED v1 + v2 patches merged | Archive A `07c432bf` |
 | `Sim/cluster_runner.py` | RECONSTRUCTED | archived contract only |
-| `Loop/IntegrationLoop.py` | RECOVERED v1 + v2 patches merged | `Claude_History` `6ac96fa8`, `07c432bf` |
+| `Loop/IntegrationLoop.py` | RECOVERED v1 + v2 patches merged | Archive A `6ac96fa8`, `07c432bf` |
 | `SDK/Telemetry.py` | RECONSTRUCTED | archived contract (append-only, `{type, payload}`, two hashes, deep-copy) |
-| `Training/Modules/calibrate_expected_wait.py` | RECOVERED | `Claude_History` `f1a41769` |
+| `Training/Modules/calibrate_expected_wait.py` | RECOVERED | Archive A `f1a41769` |
 | `Tests/*` | NEW | see below |
 | `run_worked_example.py` | NEW | — |
 
