@@ -17,7 +17,7 @@ AI conversation history for every trace of the system:
 | Archive E | 0 | 0 |
 | **Total** | **551** | **75,449** |
 
-The five archives are private repositories, labelled A to E in this document.
+The archives are not public and are labelled A to E in this document.
 
 Active development runs 2026-06-23 to 2026-08-16.
 
