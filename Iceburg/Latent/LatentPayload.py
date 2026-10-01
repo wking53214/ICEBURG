@@ -134,7 +134,8 @@ class LatentPayload:
         Compute drift-detecting hash over ALL state, including step_index.
 
         Best‑in‑Class Notes:
-        - Used by ReplayVerifier + GovernanceEnvelope.
+        - Used by the replay verifier and governance layer of the original
+          private implementation.
         - JSON sort_keys=True ensures consistent output across sessions.
         - This hash changes on every call to update_after_step, including
           quiet steps where nothing emotionally meaningful moved, because

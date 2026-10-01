@@ -7,9 +7,8 @@ REWRITTEN 2026-07-01. This replaces the earlier Simulator design (which took
 routing/staffing/bayes/queues/recorder/governance as injected per-step
 dependencies). That design was fixed and proven live earlier the same day --
 3 integration tests, 4000 fuzz trajectories -- but turned out to diverge from
-the architecture six independent test files (test_simulator_core,
-test_cluster_runner, test_replay_engine, test_rl_ppo, test_rl_marl,
-test_staffing_rl) all consistently assumed.
+the architecture six independent test files (among them test_simulator_core,
+test_cluster_runner, test_rl_ppo and test_rl_marl) all consistently assumed.
 
 CORRECTED 2026-07-02 for the four locked domain corrections (see
 ARCHITECTURE.md). Traversal is now journey-based rather than keyed off the
@@ -27,7 +26,8 @@ The split:
   here. This is the queue-level "transmission" layer -- genuinely separate
   from per-caller traversal, not injected into it.
 
-StaffingRLEngine removed 2026-07-02 (not demoted, not stubbed -- deleted).
+The earlier staffing engine was removed 2026-07-02 (not demoted, not stubbed
+-- deleted).
 Iceberg's objective ends at the ACD door: it finds and reduces pre-ACD
 friction, it does not measure its own success (that's containment, measured
 externally via inbound-vs-offered call ratios) and it does not make staffing
@@ -60,8 +60,9 @@ class Simulator:
       here, not "nothing behavioral happens here."
     - max_steps is enforced PER CALLER, using caller.latent.step_index, which
       already existed as a per-caller counter. A SIMULATOR-wide counter would
-      be wrong (test_multiple_callers_deterministic steps 3 different callers
-      5 times each = 15 total calls through one instance).
+      be wrong (a multi-caller determinism test in the original private
+      suite steps 3 different callers 5 times each = 15 total calls through
+      one instance).
     """
     graph: Any
     telemetry: Any
@@ -87,8 +88,8 @@ class Simulator:
         string rule, which named a node kind that no longer exists).
 
         Terminal: stay. Journey successor if defined and legal. Single
-        neighbor: follow. A branch with no declared journey is a GSA
-        violation -- refusing to route a caller down a path nobody declared
+        neighbor: follow. A branch with no declared journey raises
+        RuntimeError -- refusing to route a caller down a path nobody declared
         is preferable to silently picking one.
         """
         current = caller.route[-1] if caller.route else "root"
@@ -224,4 +225,4 @@ class Simulator:
 
     # update_queue: DELETED. It maintained "current occupants" of a place
     # that cannot exist (Correction 1). Not stubbed, not deprecated -- gone,
-    # same treatment StaffingRLEngine got.
+    # same treatment the earlier staffing engine got.

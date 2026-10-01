@@ -5,8 +5,8 @@ rl_ppo.py
 Deterministic, queue-level PPO policy engine.
 
 REWRITTEN 2026-07-01, adopting the architecture test_rl_ppo.py already
-specified. Superseded: the earlier PPORouter, which operated per-caller
-(choose_action(caller, node)) -- that was the "differential" layer, now
+specified. Superseded: the earlier private router, which operated per-caller
+(one action chosen per caller and node) -- that was the "differential" layer, now
 correctly separated into Simulator's own deterministic graph traversal
 (see Sim/Simulator.py). This engine only ever sees AGGREGATE queue load,
 never an individual caller -- the "transmission" layer from the
@@ -16,7 +16,7 @@ RESOLVED 2026-07-02 (was an open question, now settled): higher load ->
 higher probability is CORRECT, but not for either reason originally
 guessed (traffic routing, or capacity/staffing allocation). Neither applies:
 Simulator already routes callers by their own intent (this engine was never
-in that path), and StaffingRLEngine was removed entirely -- Iceberg's
+in that path), and the earlier staffing engine was removed entirely -- Iceberg's
 objective ends at the ACD door, staffing decisions live past it and require
 data (AHT, shrinkage, answered-vs-offered) Iceberg can never see.
 
@@ -40,7 +40,7 @@ not decided here -- flagged for [REDACTED_NAME]'s input, not guessed at.
 Governance Notes:
 - lr/gamma/eps_clip are config only, stored, not "trained" -- this is
   deterministic policy INFERENCE over fixed, seeded weights, same honest
-  distinction Opus's review flagged for the pre-fork version.
+  distinction an earlier review flagged for the pre-fork version.
 - Weights are a pure function of sorted(queue names) -- NOT Python's
   built-in hash(), which is randomized per interpreter session and would
   break cross-session replay (the exact landmine flagged earlier today).

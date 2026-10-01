@@ -2,7 +2,7 @@
 CallerState.py
 --------------
 
-Canonical caller state representation for the GSA.
+Canonical caller state representation.
 
 Best–in–Class Notes:
 - Integrated LatentPayload ensures emotional drift is tracked.
@@ -71,7 +71,7 @@ class CallerState:
         }
 
     def snapshot(self) -> Dict[str, Any]:
-        """Produces a deterministic snapshot for the ReplayVerifier."""
+        """Produces a deterministic snapshot for replay verification."""
         return {
             "caller_id": self.caller_id,
             "intent": self.intent,
